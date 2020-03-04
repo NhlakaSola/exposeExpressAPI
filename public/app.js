@@ -15,7 +15,6 @@ const addNewVisitor  = async(vName,vAge,dateOfVisit,timeOfVisit,assistantName,co
 			if (err) {
 				reject(err);
 			}
-		console.log(results.rows[0]) 
 		resolve(results.rows[0]);
 		});
 	})
@@ -31,7 +30,6 @@ const listAllVisitors = async() => {
 			reject(err);
 		}
 		resolve(results.rows);	
-		pool.end();
 	   	}
 	);
 	})
@@ -46,7 +44,6 @@ const viewVisitor = async (id) => {
 			  if (err) {
 				reject(err);
 			  }
-			  console.log(results.rows[0])
 			  resolve(results.rows[0]);
 			}
 		);
@@ -92,7 +89,6 @@ const updateVisitor = async (vid,vName,vAge,dateOfVisit,timeOfVisit,assistantNam
 			  if (err) {
 				reject(err);
 			  }
-			  console.log('updated')
 			  resolve(results.rows[0]);
 			}
 		  );
