@@ -23,15 +23,21 @@ app.delete('/deleteVisitor/:id',async(req,res)=>{
     res.end();
 })
 
-app.get('/viewVisitors',async(req,res)=>{
+app.delete('/deleteVisitors',async(req,res)=>{
     const visitor = await deleteVisitors();
+    res.send(JSON.stringify(visitor));
+    res.end();
+})
+
+app.get('/viewVisitors',async(req,res)=>{
+    const visitor = await listAllVisitors();
     res.send(JSON.stringify(visitor));
     res.end();
 })
 
 app.get('/viewVisitor/:id',async(req,res)=>{
     const visitor = await viewVisitor(req.params.id);
-    res.send(visitor);
+    res.send(JSON.stringify(visitor));
     res.end();
     
 })

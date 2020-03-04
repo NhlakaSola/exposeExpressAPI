@@ -25,7 +25,8 @@ const addNewVisitor  = async(vName,vAge,dateOfVisit,timeOfVisit,assistantName,co
 const listAllVisitors = async() => {
 	return new Promise(async(resolve,reject)=>{
 	  await pool.query(
-		'SELECT * FROM VISITORS',(err, results) => {
+		`SELECT * FROM VISITORS`,
+		(err, results) => {
 		if (err) {
 			reject(err);
 		}
@@ -39,7 +40,9 @@ const listAllVisitors = async() => {
 const viewVisitor = async (id) => {
 	return new Promise(async(resolve,reject)=>{
 		await pool.query(
-			`SELECT * FROM visitors WHERE id = $1`,[id],(err, results) => {
+			`SELECT * FROM visitors WHERE id = $1`,
+			[id],
+			(err, results) => {
 			  if (err) {
 				reject(err);
 			  }
@@ -47,7 +50,7 @@ const viewVisitor = async (id) => {
 			  resolve(results.rows[0]);
 			}
 		);
-	}
+		}
 )};
 
 const deleteVisitors = async () => {
@@ -57,7 +60,7 @@ const deleteVisitors = async () => {
 			  if (err) {
 				reject(err);
 			  }
-			  console.log('All rows deleted!3')
+			  console.log('All rows deleted!')
 			  resolve(results.rows);
 			}
 		  );
@@ -67,7 +70,9 @@ const deleteVisitors = async () => {
 const deleteVisitor = async (id) => {
 	return new Promise(async(resolve,reject)=>{
 		await pool.query(
-			`DELETE FROM visitors WHERE id = $1`,[id],(err, results) => {
+			`DELETE FROM visitors WHERE id = $1`,
+			[id],
+			(err, results) => {
 			  if (err) {
 				reject(err);
 			  }
