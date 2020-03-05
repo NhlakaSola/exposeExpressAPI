@@ -3,7 +3,7 @@ const app = express();
 const {addNewVisitor,listAllVisitors,deleteVisitor,deleteVisitors,viewVisitor,updateVisitor} = require('./app');
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 
 app.post('/addNewVisitor',async(req,res)=>{
     const name = req.body.name
@@ -59,3 +59,4 @@ const server = app.listen(3000,()=>{
     console.log('Server is running on port 3000')
 })
 
+module.exports ={server}
