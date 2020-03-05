@@ -10,7 +10,7 @@ describe('testing add visitor', ()=>{
 
     it('should check status code is 200', async (done)=>{
         try {
-            const route = await axios.get("http://127.0.0.1:3000/viewVisitor/50")
+            const route = await axios.get("http://127.0.0.1:3000/addVisitor/")
             expect(route.status).toEqual(200)
         } catch (err) {
             console.log(err)
@@ -53,7 +53,7 @@ describe('testing delete visitor', ()=>{
 
 })
 
-describe('testing update', ()=>{
+describe('testing update visitor', ()=>{
     const axios = require('axios')
     let server
     const {addNewVisitor,listAllVisitors,deleteVisitor,deleteVisitors,viewVisitor,updateVisitor} = require('../public/app')
