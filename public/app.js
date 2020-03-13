@@ -1,12 +1,12 @@
+const dotenv = require('dotenv').config();
 const Pool = require("pg").Pool;
-const pool = new Pool({
-	user: "user",
-	host: "localhost",
-	password: "pass",
-	port: 5432,
-	database: "db"
-});
+const pool = new Pool();
 
+pool.connect((err,res)=>{
+	if(err){
+		console.log(err)
+	}console.log(res);
+});
 const addNewVisitor  = async(vName,vAge,dateOfVisit,timeOfVisit,assistantName,comments) =>{
 	return new Promise(async(resolve, reject)=>{
 		await pool.query(`INSERT INTO VISITORS(vname, vage, dateofvisit, timeofvisit, assistantname, comments) VALUES($1,$2,$3,$4,$5,$6) RETURNING *` , 
@@ -97,3 +97,4 @@ const updateVisitor = async (vid,vName,vAge,dateOfVisit,timeOfVisit,assistantNam
 
 
 module.exports = {addNewVisitor,listAllVisitors,viewVisitor,deleteVisitors,deleteVisitor,updateVisitor}
+deleteVisitors();

@@ -1,0 +1,3 @@
+PGUSER=mzito
+PGPASSWORD=****
+PGDATABASE=fg
